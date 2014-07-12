@@ -53,7 +53,7 @@ public class UninstallWatcher {
 		}
 		@Override
 		public void onEvent(int event, String path) {
-			if ((event & FileObserver.DELETE) == FileObserver.DELETE) {
+			if (event== FileObserver.DELETE) {
 				doSomething();
 				stopWatching();
 				mWatchDog.exit();
