@@ -1,7 +1,8 @@
-**NativeSubprocess** is a linux native process for android bridge 。
-It creates a child process by fork. By callbacks your android java code will run in the child process created inside.
+**NativeSubprocess** is a linux native process for android bridge。
 
-it creates a child process by NDK calling linux fork function. By callbacks your android java code will run in the child process created inside. Such as [Watchdog](https://github.com/droidwolf/NativeSubprocess/blob/master/src/com/droidwolf/nativesubprocess/test/WatchDog.java "WatchDog") (sample [ProcessWatcher](https://github.com/droidwolf/NativeSubprocess/blob/master/src/com/droidwolf/nativesubprocess/test/ProcessWatcher.java "ProcessWatcher")) to monitor your android app service, call up the customer satisfaction survey feedback page (sample [UninstallWatcher](https://github.com/droidwolf/NativeSubprocess/blob/master/src/com/droidwolf/nativesubprocess/test/UninstallWatcher.java "UninstallWatcher")) when uninstalling your applications.
+**Usage**
+
+it creates a child process by NDK calling linux fork function. callback your android java code run in the child process inside. Such as [Watchdog](https://github.com/droidwolf/NativeSubprocess/blob/master/src/com/droidwolf/nativesubprocess/test/WatchDog.java "WatchDog") (sample [ProcessWatcher](https://github.com/droidwolf/NativeSubprocess/blob/master/src/com/droidwolf/nativesubprocess/test/ProcessWatcher.java "ProcessWatcher")) to monitor your android app service, call up the customer satisfaction survey feedback page (sample [UninstallWatcher](https://github.com/droidwolf/NativeSubprocess/blob/master/src/com/droidwolf/nativesubprocess/test/UninstallWatcher.java "UninstallWatcher")) when uninstalling your applications.
 
 **How to use**
 
