@@ -27,19 +27,12 @@ static void runOnSubprocess(JNIEnv *env, jclass clazz, pid_t ppid) {
 	if (clazz != NULL) {
 		jobject subprocess = env->NewObject(clazz,env->GetMethodID(clazz, "<init>", "()V"));
 		if (subprocess != NULL) {
-			jmethodID methodId = env->GetMethodID(clazz, "runOnSubprocess","(I)V");
-			if (methodId != NULL) {
-				env->CallVoidMethod(subprocess, methodId, ppid);
-			} else {
-				LOG_D(LOGTAG, "get run methodId failed!");
-			}
+			env->CallVoidMethod(subprocess, env->GetMethodID(clazz, "runOnSubprocess","(I)V"), ppid);
 			env->DeleteLocalRef(subprocess);
 		} else {
-			LOG_D(LOGTAG, "createSubprocess--AllocObject Subprocess failed!");
+			LOG_D(LOGTAG, "create--NewObject Subprocess failed!");
 		}
 		env->DeleteLocalRef(clazz);
-	} else {
-		LOG_D(LOGTAG, "find class failed!");
 	}
 }
 
@@ -54,7 +47,7 @@ static void JNICALL create(JNIEnv *env, jobject thiz,jclass clazz) {
 		LOG_D(LOGTAG, "create--runOnSubprocess finished!");
 		exit(1);
 	} else {
-		LOG_D(LOGTAG, "create--run on father process!");
+		LOG_D(LOGTAG, "create--run on parent process!");
 	}
 }
 
