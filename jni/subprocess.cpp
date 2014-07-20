@@ -36,7 +36,7 @@ static void runOnSubprocess(JNIEnv *env, jclass clazz, pid_t ppid) {
 	}
 }
 
-static void JNICALL create(JNIEnv *env, jobject thiz,jclass clazz) {
+static void JNICALL create(JNIEnv *env, jclass thiz,jclass clazz) {
 	pid_t ppid = getpid();
 	pid_t pid = fork();
 	if (pid < 0) {
