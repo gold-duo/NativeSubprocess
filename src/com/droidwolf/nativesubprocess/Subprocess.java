@@ -13,18 +13,32 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
-*/
+ */
 package com.droidwolf.nativesubprocess;
 
+import android.content.Context;
+import android.util.Log;
+
 public abstract class Subprocess {
-	final static String LIB_NAME = "subprocess";
+	private int mParentPid;
+	private Context mContext;
 	static {
-		System.loadLibrary(LIB_NAME);
+		System.loadLibrary("subprocess");
 	}
 
-	public Subprocess() {}
+	public Subprocess() {
+		Log.d(getClass().getSimpleName(), "mParentPid="+mParentPid+", mContext="+(mContext==null));
+	}
 
-	public abstract void runOnSubprocess(int parentPid);
+	public final int getParentPid() {
+		return mParentPid;
+	}
 
-	public static native void create(Class<? extends Subprocess> clazz);
+	public final Context getContext() {
+		return mContext;
+	}
+
+	public abstract void runOnSubprocess();
+
+	public static native void create(Context ctx,Class<? extends Subprocess> clazz);
 }

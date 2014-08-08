@@ -37,7 +37,7 @@ public class WatchDogActivity extends Activity {
 				+"2,I will lift uninstall the browser to display my blog");
 		tv.setGravity(Gravity.CENTER);
 		super.setContentView(tv);
-		Subprocess.create(WatchDog.class);
+		Subprocess.create(this,WatchDog.class);
 	}
 
 }

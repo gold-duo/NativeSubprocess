@@ -23,11 +23,14 @@
 #define LOGTAG "subprocess"
 #define LOG_D(tag, msg) __android_log_write(ANDROID_LOG_DEBUG, tag, msg)
 
-static void runOnSubprocess(JNIEnv *env, jclass clazz, pid_t ppid) {
+static void runOnSubprocess(JNIEnv *env, jclass clazz, pid_t ppid,jobject context) {
 	if (clazz != NULL) {
-		jobject subprocess = env->NewObject(clazz,env->GetMethodID(clazz, "<init>", "()V"));
+		jobject subprocess = env->AllocObject(clazz);
 		if (subprocess != NULL) {
-			env->CallVoidMethod(subprocess, env->GetMethodID(clazz, "runOnSubprocess","(I)V"), ppid);
+			env->SetIntField(subprocess, env->GetFieldID(clazz,"mParentPid","I"), ppid);
+			env->SetObjectField(subprocess, env->GetFieldID(clazz,"mContext","Landroid/content/Context;"), context);
+			env->CallVoidMethod(subprocess, env->GetMethodID(clazz,  "<init>", "()V"));
+			env->CallVoidMethod(subprocess, env->GetMethodID(clazz, "runOnSubprocess","()V"));
 			env->DeleteLocalRef(subprocess);
 		} else {
 			LOG_D(LOGTAG, "create--NewObject Subprocess failed!");
@@ -36,14 +39,14 @@ static void runOnSubprocess(JNIEnv *env, jclass clazz, pid_t ppid) {
 	}
 }
 
-static void JNICALL create(JNIEnv *env, jclass thiz,jclass clazz) {
+static void JNICALL create (JNIEnv *env, jclass thiz, jobject context, jclass clazz){
 	pid_t ppid = getpid();
 	pid_t pid = fork();
 	if (pid < 0) {
 		LOG_D(LOGTAG, "create--fork failed!");
 	} else if (pid == 0) {
 		LOG_D(LOGTAG, "create--runOnSubprocess start...");
-		runOnSubprocess(env,clazz,ppid);
+		runOnSubprocess(env,clazz,ppid,context);
 		LOG_D(LOGTAG, "create--runOnSubprocess finished!");
 		exit(1);
 	} else {
@@ -52,8 +55,9 @@ static void JNICALL create(JNIEnv *env, jclass thiz,jclass clazz) {
 }
 
 static JNINativeMethod METHODS[]={
-		{"create", "(Ljava/lang/Class;)V", (void *)create}
+		{"create", "(Landroid/content/Context;Ljava/lang/Class;)V", (void *)create}
 };
+
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	int retval = -1;
 	JNIEnv *env;

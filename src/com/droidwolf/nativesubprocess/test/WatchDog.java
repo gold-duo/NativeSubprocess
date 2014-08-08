@@ -26,8 +26,8 @@ public class WatchDog extends Subprocess {
 	private UninstallWatcher mUninstallWatcher;
 
 	@Override
-	public void runOnSubprocess(int parentPid) {
-		regWatchers(parentPid);
+	public void runOnSubprocess() {
+		regWatchers(getParentPid());
 		holdMainThread();
 		unregWatchers();
 		System.exit(0);
