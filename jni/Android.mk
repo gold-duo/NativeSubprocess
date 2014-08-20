@@ -20,6 +20,6 @@ include $(CLEAR_VARS)
 
 LOCAL_LDLIBS    := -lm -llog 
 LOCAL_MODULE    := subprocess
-LOCAL_SRC_FILES := subprocess.cpp
+LOCAL_SRC_FILES := subprocess.c
 
 include $(BUILD_SHARED_LIBRARY)
