@@ -15,7 +15,7 @@
  * limitations under the License.
 */
 
-package com.droidwolf.nativesubprocess.test;
+package com.droidwolf.example;
 
 import com.droidwolf.nativesubprocess.Subprocess;
 

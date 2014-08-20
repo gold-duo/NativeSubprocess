@@ -15,7 +15,7 @@
  * limitations under the License.
 */
 
-package com.droidwolf.nativesubprocess.test;
+package com.droidwolf.example;
 
 import com.droidwolf.nativesubprocess.Subprocess;
 
@@ -42,7 +42,7 @@ public class WatchDog extends Subprocess {
 		mProcessWatcher.start();
 
 		if (mUninstallWatcher == null) {
-			mUninstallWatcher = new UninstallWatcher("com.droidwolf.nativesubprocess",this);
+			mUninstallWatcher = new UninstallWatcher(getContext().getPackageName(),this);
 		} else {
 			mUninstallWatcher.stop();
 		}

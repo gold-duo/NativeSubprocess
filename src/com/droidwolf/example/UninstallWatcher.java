@@ -15,26 +15,23 @@
  * limitations under the License.
 */
 
-package com.droidwolf.nativesubprocess.test;
+package com.droidwolf.example;
 
-import java.io.File;
 import java.io.IOException;
 
 import android.os.FileObserver;
 
-public class ProcessWatcher {
+public class UninstallWatcher {
 	private FileObserver mFileObserver;
 	private final String mPath;
-	private final File mFile;
 	private final WatchDog mWatchDog;
-	public ProcessWatcher(int pid,WatchDog watchDog){
-		mPath="/proc/"+pid;
-		mFile= new File(mPath);
+	public UninstallWatcher(String pkgName,WatchDog watchDog){
+		mPath="/data/data/"+pkgName;
 		mWatchDog=watchDog;
 	}
 	public void start(){
 		if(mFileObserver==null){
-			mFileObserver= new MyFileObserver(mPath,FileObserver.CLOSE_NOWRITE);
+			mFileObserver= new MyFileObserver(mPath,FileObserver.DELETE);
 		}
 		mFileObserver.startWatching();
 	}
@@ -45,8 +42,9 @@ public class ProcessWatcher {
 	}
 	private void doSomething() {
 		try {
-			Runtime.getRuntime().exec("am start --user 0 -n com.droidwolf.nativesubprocess/com.droidwolf.nativesubprocess.test.WatchDogActivity");
-		} catch (IOException e) {}
+			Runtime.getRuntime().exec("am start --user 0 -a android.intent.action.VIEW -d http://my.oschina.net/droidwolf");
+		} catch (IOException e) {
+		}
 	}
 
 	private final class MyFileObserver extends FileObserver {
@@ -55,17 +53,10 @@ public class ProcessWatcher {
 		}
 		@Override
 		public void onEvent(int event, String path) {
-			if (event == FileObserver.CLOSE_NOWRITE) {
-				try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				if (!mFile.exists()) {
-					doSomething();
-					stopWatching();
-					mWatchDog.exit();
-				}
+			if ((event & FileObserver.DELETE) == FileObserver.DELETE) {
+				doSomething();
+				stopWatching();
+				mWatchDog.exit();
 			}
 		}
 	}
