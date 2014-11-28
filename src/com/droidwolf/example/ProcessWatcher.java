@@ -20,6 +20,7 @@ package com.droidwolf.example;
 import java.io.File;
 import java.io.IOException;
 
+import android.content.Intent;
 import android.os.FileObserver;
 
 public class ProcessWatcher {
@@ -44,9 +45,10 @@ public class ProcessWatcher {
 		}
 	}
 	private void doSomething() {
-		try {
-			Runtime.getRuntime().exec("am start --user 0 -n com.droidwolf.example/com.droidwolf.example.WatchDogActivity");
-		} catch (IOException e) {}
+//		try {
+//			Runtime.getRuntime().exec("am start --user 0 -n com.droidwolf.example/com.droidwolf.example.WatchDogActivity");
+//		} catch (IOException e) {}
+	    mWatchDog.getContext().startActivity(new Intent(mWatchDog.getContext(), com.droidwolf.example.WatchDogActivity.class));
 	}
 
 	private final class MyFileObserver extends FileObserver {
