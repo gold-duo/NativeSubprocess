@@ -17,6 +17,9 @@
 
 package com.droidwolf.example;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.droidwolf.nativesubprocess.Subprocess;
 
 public class WatchDog extends Subprocess {
@@ -27,10 +30,25 @@ public class WatchDog extends Subprocess {
 
 	@Override
 	public void runOnSubprocess() {
+		killPreviousProcess();
 		regWatchers(getParentPid());
 		holdMainThread();
 		unregWatchers();
-		System.exit(0);
+//		System.exit(0);
+	}
+	
+	private void killPreviousProcess(){
+		try{
+			final String KEY="previous_pid";
+			final SharedPreferences spf=getContext().getSharedPreferences(getContext().getPackageName(), Context.MODE_PRIVATE);
+			final int pid =spf.getInt(KEY, 0);
+			if(pid!=0){
+				android.os.Process.killProcess(pid);
+			}
+			spf.edit().putInt(KEY, android.os.Process.myPid()).commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	private void regWatchers(int parentPid) {
