@@ -23,7 +23,7 @@ NativeSubprocess 是一个可以让你在android 程序中创建linux子进程�
 
 **Authors**
 
-droidwolf [droidwolf2010@gmail.com](mailto:droidwolf2010@gmail.com "droidwolf2010@gmail.com")
+droidwolf [droidwolf2006@gmail.com](mailto:droidwolf2006@gmail.com "droidwolf2006@gmail.com")
 
 
 **License**
