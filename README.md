@@ -6,8 +6,7 @@ it creates a child process by NDK calling linux fork function. callback your and
 
 **How to use**
 
-1. copy com.droidwolf.nativesubprocess package to your project;
-2. copy libsubprocess.so library to your  libs/armeabi project directory.
+1. copy [subprocess-release.aar](https://github.com/droidwolf/NativeSubprocess/blob/master/subprocess/subprocess-release.aar) to lib directory.
 3. implements Subprocess class and  override runOnSubprocess function.
 4. Finally, create your child process call by Subprocess.create function.
 
