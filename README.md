@@ -3,7 +3,7 @@
 **Usage**
 
 it creates a child process by NDK calling linux fork function. callback your android java code run in the child process inside. Such as
-[Watchdog](https://github.com/droidwolf/NativeSubprocess/blob/master/example/src/main/java/com/droidwolf/example/WatchDog.java "WatchDog")(sample [ProcessWatcher](https://github.com/droidwolf/NativeSubprocess/blob/master/example/src/main/java/com/droidwolf/example/ProcessWatcher.java "ProcessWatcher"))to monitor your android app service, call up the customer satisfaction survey feedback page(sample [UninstallWatcher](https://github.com/droidwolf/NativeSubprocess/blob/master/example/src/main/java/com/droidwolf/example/UninstallWatch "UninstallWatcher")) when uninstalling your applications.
+[Watchdog](https://github.com/droidwolf/NativeSubprocess/blob/master/example/src/main/java/com/droidwolf/example/WatchDog.java "WatchDog")(sample [ProcessWatcher](https://github.com/droidwolf/NativeSubprocess/blob/master/example/src/main/java/com/droidwolf/example/ProcessWatcher.java "ProcessWatcher"))to monitor your android app service, call up the customer satisfaction survey feedback page(sample [UninstallWatcher](https://github.com/droidwolf/NativeSubprocess/blob/master/example/src/main/java/com/droidwolf/example/UninstallWatcher.java "UninstallWatcher")) when uninstalling your applications.
 
 **How to use**
 
