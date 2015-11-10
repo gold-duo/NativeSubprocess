@@ -17,9 +17,9 @@
 
 package com.droidwolf.example;
 
-import java.io.IOException;
+import com.droidwolf.fix.FileObserver;
 
-import android.os.FileObserver;
+import java.io.IOException;
 
 public class UninstallWatcher {
 	private FileObserver mFileObserver;

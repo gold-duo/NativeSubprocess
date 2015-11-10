@@ -17,11 +17,11 @@
 
 package com.droidwolf.example;
 
-import java.io.File;
-import java.io.IOException;
-
 import android.content.Intent;
-import android.os.FileObserver;
+
+import com.droidwolf.fix.FileObserver;
+
+import java.io.File;
 
 public class ProcessWatcher {
 	private FileObserver mFileObserver;
