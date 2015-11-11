@@ -7,7 +7,7 @@ it creates a child process by NDK calling linux fork function. callback your and
 
 **How to use**
 
-1. import [subprocess-release.aar](https://raw.githubusercontent.com/droidwolf/NativeSubprocess/master/subprocess/subprocess-release.aar) .
+1. import subprocess aar .
    
    add repositories ***maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }***
    
