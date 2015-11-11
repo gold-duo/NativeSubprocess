@@ -1,3 +1,5 @@
+*DEPRECATED*
+
 **NativeSubprocess** is a linux native process for android bridge。
 
 **Usage**
@@ -15,6 +17,7 @@ it creates a child process by NDK calling linux fork function. callback your and
 4. Finally, create your child process call by Subprocess.create function.
 
 **中文描述**
+*N年前的技术总要有终结的时候，最后一次更新*
 安全软件卸载后调出浏览器苦苦哀求"主人，为什么要抛弃我..."页面是怎么做到的？service经常莫名挂了肿么办？用 NativeSubprocess一切都很简单。
 
 NativeSubprocess 是一个可以让你在android 程序中创建linux子进程并执行你的java代码的so库。由于市面上典型的内存清理工具值清理apk 包关联的进程，而不会处理linux原生进程，所以NativeSubprocess 可以做什么您懂滴！
