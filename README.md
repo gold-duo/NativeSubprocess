@@ -17,7 +17,7 @@ it creates a child process by NDK calling linux fork function. callback your and
 4. Finally, create your child process call by Subprocess.create function.
 
 **中文描述**
-#  N年前的技术总要有终结的时候，最后一次更新
+#  不再更新
 
 
 安全软件卸载后调出浏览器苦苦哀求"主人，为什么要抛弃我..."页面是怎么做到的？service经常莫名挂了肿么办？用 NativeSubprocess一切都很简单。
