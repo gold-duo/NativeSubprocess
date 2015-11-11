@@ -8,9 +8,7 @@ it creates a child process by NDK calling linux fork function. callback your and
 **How to use**
 
 1. import subprocess aar .
-   
    add repositories ***maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }***
-   
    add dependencies ***compile 'com.github.droidwolf:libsubprocess:1.0.1-SNAPSHOT'***
 
 3. implements Subprocess class and  override runOnSubprocess function.
