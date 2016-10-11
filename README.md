@@ -18,7 +18,7 @@ it creates a child process by NDK calling linux fork function. callback your and
 
 **中文描述**
 #  不再更新
-
+**可能你们真正需要的是这个东西[andmon](https://github.com/droidwolf/andmon)**
 
 安全软件卸载后调出浏览器苦苦哀求"主人，为什么要抛弃我..."页面是怎么做到的？service经常莫名挂了肿么办？用 NativeSubprocess一切都很简单。
 
